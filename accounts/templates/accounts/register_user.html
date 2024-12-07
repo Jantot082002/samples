@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register User</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa; /* Light blue background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #00796b; /* Darker blue for heading */
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        form input,
+        form select,
+        form button {
+            padding: 12px;
+            border-radius: 4px;
+            border: 1px solid #00796b; /* Darker blue border */
+            font-size: 16px;
+        }
+
+        form input:focus,
+        form select:focus {
+            border-color: #0288d1;  /* Light blue border on focus */
+            outline: none;
+        }
+
+        form button {
+            background-color: #0288d1; /* Blue button color */
+            color: white;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #0277bd; /* Darker blue on hover */
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .field label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .field small {
+            font-size: 14px;
+            color: #777;
+            margin-top: 5px;
+        }
+
+        a {
+            text-align: center;
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #0288d1; /* Blue color for the link */
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Register User</h2>
+        <form method="post">
+            {% csrf_token %}
+            
+            <!-- Username Field with Custom Text -->
+            <div class="field">
+                <label for="id_username">Username</label>
+                {{ form.username }}  <!-- Renders the input field -->
+                <small>Enter a unique username.</small>
+            </div>
+
+            <!-- Password Field 1 with Custom Text -->
+            <div class="field">
+                <label for="id_password1">Password</label>
+                {{ form.password1 }}
+                <small>Choose a strong password.</small>
+            </div>
+
+            <!-- Password Field 2 with Custom Text -->
+            <div class="field">
+                <label for="id_password2">Confirm Password</label>
+                {{ form.password2 }}
+                <small>Re-enter your password for confirmation.</small>
+            </div>
+
+            <!-- Role Field with Custom Text -->
+            <div class="field">
+                <label for="id_role">Role</label>
+                {{ form.role }}
+                <small>Select your role from the dropdown.</small>
+            </div>
+
+            <button type="submit">Register</button>
+        </form>
+        <a href="{% url 'login' %}">Already have an Account? Login</a>
+    </div>
+</body>
+</html>

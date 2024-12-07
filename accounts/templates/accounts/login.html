@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa; /* Light blue background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #00796b; /* Darker blue for heading */
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-field {
+            margin-bottom: 15px;
+        }
+
+        .form-field input {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #00796b; /* Darker blue border */
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        /* Border color change on focus */
+        .form-field input:focus {
+            border-color: #0288d1; /* Light blue border on focus */
+            outline: none;
+        }
+
+        button {
+            padding: 12px;
+            background-color: #0288d1; /* Blue button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0277bd; /* Darker blue on hover */
+        }
+
+        a {
+            text-align: center;
+            display: block;
+            margin-top: 15px;
+            color: #0288d1; /* Blue color for link */
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-field">
+                {{ form.username }}
+            </div>
+            <div class="form-field">
+                {{ form.password }}
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <a href="{% url 'register' %}">Don't have an Account? Register</a>
+    </div>
+</body>
+</html>
